@@ -1,0 +1,58 @@
+---
+import LogoWhite from "../assets/logo-small-white.svg";
+
+export interface Props {
+  development: string;
+  artwork: string;
+}
+
+const { development, artwork } = Astro.props;
+---
+
+<footer>
+  <div id="credit">
+    <img
+      src={LogoWhite}
+      alt="The Michigan Daily logo"
+      width="80px"
+      height="auto"
+    />
+    <div id="credit-copy">
+      <b>The Michigan Daily</b>
+      <small><b>Design and development by {development}</b></small>
+      <small><b>Artwork by {artwork}</b></small>
+      <small>420 Maynard Street, Ann Arbor, MI 48105</small>
+    </div>
+  </div>
+  <div id="copyright">
+    <small
+      >&copy; 2023 One hundred and thirty-two years of editorial freedom</small
+    >
+  </div>
+</footer>
+
+<style>
+  footer {
+    color: white;
+    padding: 1rem;
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  footer #credit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  footer #credit-copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer #copyright {
+    align-self: center;
+  }
+</style>

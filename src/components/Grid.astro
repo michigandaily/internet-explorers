@@ -1,0 +1,24 @@
+<main>
+  <slot />
+</main>
+
+<style>
+  main {
+    display: grid;
+    place-items: start center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin: 1.25rem auto;
+    padding: 50px 10px;
+    max-width: 900px;
+    column-gap: 3rem;
+  }
+
+  @media (max-width: 767px) {
+  main {
+    grid-template-columns: 1fr; /* Single column layout on mobile */
+    padding: 30px 10px; /* Adjust padding for better spacing */
+    column-gap: 0; /* No column gap on mobile */
+  }
+}
+</style>

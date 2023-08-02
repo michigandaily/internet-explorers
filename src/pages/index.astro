@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Grid from "../components/Grid.astro";
+import Card from "../components/Card.astro";
+import Footer from "../components/Footer.astro";
+
+import page from "../data/main.json";
+import articles from "../data/articles.json";
+
+const pages = page[0];
+
+const d = Astro.props;
+
+const artists = Array.from(
+  new Set(
+    [
+      pages.social_image_credit.trim(),
+      pages.header_image_credit.trim(),
+      ...articles.map((d) => d.image_credit.trim()),
+    ].filter((d) => d)
+  )
+);
+
+const art_credit = `${artists.slice(0, -1).join(", ")} and ${artists.at(-1)}`;
+
+const { default: logo } = await import(
+  `../assets/logo-small-${pages.header_logo_color}.svg`
+);
+---
+
+<canvas id="bg"></canvas>
+<div id="content">
+  <Layout
+    title={pages.page_title}
+    seotitle={pages.seo_title}
+    description={pages.seo_description}
+    img={pages.social_image}
+    date={pages.publish_time}
+    author={pages.author_name}
+    background_color={pages.background_color}
+  >
+    <Header
+      title={pages.header_title}
+      body={pages.header_text}
+      authorEmail={pages.author_email}
+      authorName={pages.author_name}
+      authorColor={pages.author_color}
+      logoSource={logo}
+      imageSource={pages.header_image || undefined}
+      imageAlternativeText={pages.header_image_alt_text || undefined}
+      textColor={pages.header_text_color}
+    />
+  
+    <Grid>
+      {
+        articles.map(
+          (s: {
+            url: string;
+            image_url: string;
+            image_alt_text: string;
+            title: string;
+            author: string;
+          }) => (
+            <Card
+              url={s.url}
+              img={s.image_url}
+              alt={s.image_alt_text}
+              title={s.title}
+              author={s.author}
+              mode={pages.story_text_mode}
+            />
+          )
+        )
+      }
+    </Grid>
+    <Footer development={pages.design_development_credit} artwork={art_credit} />
+  </div>
+
+  <script src="../scripts/globe.js"></script>
+</Layout>
+
+
+<style>
+  @font-face {
+    font-family: "Hoefler";
+    src: url("/2023/travel-edition/fonts/HoeflerTextRegular.ttf")
+      format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Hoefler";
+    src: url("/2023/travel-edition/fonts/HoeflerTextBold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  html,
+  body {
+    font-family: "Hoefler", serif;
+    padding: 0;
+    margin: 0;
+  }
+  #bg {
+    position: fixed;
+  }
+  #content {
+    position: absolute;
+  }
+</style>
