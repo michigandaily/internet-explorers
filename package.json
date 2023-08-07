@@ -24,6 +24,5 @@
     "sink": "michigandaily/sink#v2.5.1"
   },
   "main": "index.js",
-  "repository": "https://github.com/MichiganDaily/sports-saturdays-2023.git",
   "license": "MIT"
 }
