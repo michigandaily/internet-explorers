@@ -3,17 +3,8 @@
     "distribution": "E2N1K85UYVM55K",
     "region": "us-east-2",
     "bucket": "specials.michigandaily.com",
-    "key": "2023/travel-edition",
+    "key": "/bside/2025/internet-explorers/",
     "build": "./dist",
     "profile": "sink"
-  },
-  "fetch": [
-    {
-      "type": "sheet",
-      "id": "1n2Owojy4cGM8ritXLxf8fxKrBQkC0I75F3ZkQwHrBe0",
-      "output": "src/data",
-      "extension": ".json",
-      "auth": "~/.daily-google-services.json"
-    }
-  ]
+  }
 }

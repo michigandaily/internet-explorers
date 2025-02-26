@@ -1,32 +1,27 @@
 ---
-import LogoWhite from "../assets/logo-small-white.svg";
+import logo from "../assets/logo-small-white.svg";
+import { Image } from 'astro:assets';
 
-export interface Props {
-  development: string;
-  artwork: string;
-}
-
-const { development, artwork } = Astro.props;
 ---
 
 <footer>
   <div id="credit">
-    <img
-      src={LogoWhite}
+    <Image
+      src={logo}
       alt="The Michigan Daily logo"
-      width="80px"
-      height="auto"
+      id="logo"
+      width="20"
+      height="20"
     />
     <div id="credit-copy">
       <b>The Michigan Daily</b>
-      <small><b>Design and development by {development}</b></small>
-      <small><b>Artwork by {artwork}</b></small>
+      <small><b>Made with ♡ by Darrin Zhou</b></small>
       <small>420 Maynard Street, Ann Arbor, MI 48105</small>
     </div>
   </div>
   <div id="copyright">
     <small
-      >&copy; 2023 One hundred and thirty-two years of editorial freedom</small
+      >&copy; 2023 One hundred and thirty-three years of editorial freedom</small
     >
   </div>
 </footer>
@@ -54,5 +49,9 @@ const { development, artwork } = Astro.props;
 
   footer #copyright {
     align-self: center;
+  }
+  footer #logo {
+    width: 80px;
+    height: auto;
   }
 </style>

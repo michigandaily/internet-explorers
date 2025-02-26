@@ -1,114 +1,160 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Grid from "../components/Grid.astro";
-import Card from "../components/Card.astro";
 import Footer from "../components/Footer.astro";
-
-import page from "../data/main.json";
-import articles from "../data/articles.json";
-
-const pages = page[0];
-
-const d = Astro.props;
-
-const artists = Array.from(
-  new Set(
-    [
-      pages.social_image_credit.trim(),
-      pages.header_image_credit.trim(),
-      ...articles.map((d) => d.image_credit.trim()),
-    ].filter((d) => d)
-  )
-);
-
-const art_credit = `${artists.slice(0, -1).join(", ")} and ${artists.at(-1)}`;
-
-const { default: logo } = await import(
-  `../assets/logo-small-${pages.header_logo_color}.svg`
-);
+import social_image from "../assets/globe.png";
+import fire from "../assets/rfirewal.gif";
+import globe from "../assets/9.gif";
+import { Image } from 'astro:assets';
+import Icons from "../components/icons.astro"
+import rocket from "../assets/spaceship.gif"
+import arts from "../assets/wordart.png"
 ---
 
-<canvas id="bg"></canvas>
-<div id="content">
+<body>
   <Layout
-    title={pages.page_title}
-    seotitle={pages.seo_title}
-    description={pages.seo_description}
-    img={pages.social_image}
-    date={pages.publish_time}
-    author={pages.author_name}
-    background_color={pages.background_color}
+    title="Internet Explorers"
+    seotitle="Internet Explorers"
+    description="The Michigan Daily Arts presents: the Internet Explorers B-side"
+    author="Holly Tsch"
   >
-    <Header
-      title={pages.header_title}
-      body={pages.header_text}
-      authorEmail={pages.author_email}
-      authorName={pages.author_name}
-      authorColor={pages.author_color}
-      logoSource={logo}
-      imageSource={pages.header_image || undefined}
-      imageAlternativeText={pages.header_image_alt_text || undefined}
-      textColor={pages.header_text_color}
-    />
-  
-    <Grid>
-      {
-        articles.map(
-          (s: {
-            url: string;
-            image_url: string;
-            image_alt_text: string;
-            title: string;
-            author: string;
-          }) => (
-            <Card
-              url={s.url}
-              img={s.image_url}
-              alt={s.image_alt_text}
-              title={s.title}
-              author={s.author}
-              mode={pages.story_text_mode}
-            />
-          )
-        )
-      }
-    </Grid>
-    <Footer development={pages.design_development_credit} artwork={art_credit} />
+  </Layout>
+  <div id="content">
+    <h2>WELCOME TO OUR WEBPAGE!!!</h2>
+    <Image src={arts} alt="" id="arts"/>
+    <div id="title">
+      <Image src={globe} alt="Spinning globe" />
+      <h1>Internet Explorers</h1>
+      <Image src={globe} alt="Spinning globe" />
+    </div>
+    <Image src={fire} alt="Animated fire"/>
+    <Image src={social_image} alt="Cover image" id="cover" />
+    <div id="blurb">
+        <p>Right now, you’re reading this on a computer. Maybe a phone. These things are easy to take for granted — they feel like they’ve been here forever. 10 to 15 years ago, though, our generation was collectively asking for computer privileges on a weeknight. Afterward, in a dim glow, we had our first childhood experiences that existed completely outside of parental supervision. In hindsight, being left alone on the internet as a kid inspires the same gut-level flood of panic as leaving a child alone outside — but back then, things were different. Left in the capitalistic child-designated safe zones, we experienced the world through a distorted lens.</p>
+        <p>Now, we’ve collected the memories of the early internet and all its messy, complicated implications for you to read. The games we were fascinated with, the spaces we met friends in, the risks of radicalization and the ways the internet all comes back to us.</p>
+        <p id="author"><i>Senior Arts Editor Holly Tsch can be reached at htsch@umich.edu.</i></p>  
+        <Image src={rocket} alt="Rocket animation" />
+    </div>
+   <Icons />
   </div>
 
-  <script src="../scripts/globe.js"></script>
-</Layout>
-
+  <Footer />
+</body>
 
 <style>
-  @font-face {
-    font-family: "Hoefler";
-    src: url("/2023/travel-edition/fonts/HoeflerTextRegular.ttf")
-      format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Hoefler";
-    src: url("/2023/travel-edition/fonts/HoeflerTextBold.otf") format("opentype");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
-
   html,
   body {
-    font-family: "Hoefler", serif;
+    font-family: "Comic Sans MS";
+    padding: 0;
+    margin: 0;
+    background-image: url("../assets/8eff81d46686e3c82c64565eb09393b9.gif");
+    color: white;
+  }
+  #layout {
+    display: flex;
+    flex-direction: row;
+  }
+  #arts {
+    max-width: 90ch;
+    width: 100%;
+    height: auto;
+  }
+  #content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #content h1 {
+    font-size: 5em;
+  }
+  #content h2 {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 3em;
+  }
+  #title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #title img {
+    margin: 2ch;
+    height: 5rem;
+    width: 5rem;
+  }
+  #blurb {
+  width: 90%;
+  max-width: 70ch; 
+  background-color: blue;
+  border-top: 5px solid lightgrey;
+  border-bottom: 5px solid grey;
+  border-left: 5px solid lightgrey;
+  border-right: 5px solid grey;
+  padding: 2ch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto; 
+  box-sizing: border-box; 
+  }
+
+  #blurb #author {
+    padding-top: 1ch;
+  }
+  #cover {
+    max-width: 50em;
+    width: 100%;
+    height: auto;
+    margin: 5ch;
+    transition: transform 0.8s ease-in-out;
+    cursor: pointer;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  #cover.spinning {
+    animation: spin 0.8s;
+  }
+
+  @media (max-width: 768px) {
+  #title {
+    flex-direction: column;
+  }
+  #content h1 {
+    font-size: 3em;
     padding: 0;
     margin: 0;
   }
-  #bg {
-    position: fixed;
+  
+  #content h2 {
+    font-size: 2em; 
+    text-align: center;
   }
-  #content {
-    position: absolute;
+  
+  #cover {
+    margin: 2ch;
   }
+
+}
+
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const coverImage = document.querySelector('#cover') as HTMLElement;
+    
+    coverImage?.addEventListener('click', () => {
+      coverImage.classList.add('spinning');
+      
+      // Remove the class after animation completes
+      setTimeout(() => {
+        coverImage.classList.remove('spinning');
+      }, 800);
+    });
+  });
+</script>

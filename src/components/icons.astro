@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import cow from "../assets/icons/cow.png";
+import gems from "../assets/icons/gems.png";
+import grave from "../assets/icons/grave.png";
+import papa from "../assets/icons/papa.png";
+import penguin from "../assets/icons/penguin.png";
+import plus from "../assets/icons/plus.png";
+import spiral from "../assets/icons/spiral.png";
+---
+<icons>
+    <a href="https://www.michigandaily.com/arts/digital-culture/flashpoint-and-graveyards/">
+        <Image src={grave} alt="An illustration of a pixelated gravestone with a lightning bolt on it."/>
+        <p class="articletitle">Flashpoint and Graveyards</p>
+        <p class="articleauth"><i>Holly Tsch</i></p>
+    </a>
+    <a href="https://www.michigandaily.com/arts/digital-culture/google-and-avoiding-radicalization/">
+        <Image src={plus} alt="An illustration of a pixelated plus icon."/>
+        <p class="articletitle">Google+ and avoiding radicalization</p>
+        <p class="articleauth"><i>Lin Yang</i></p>
+    </a>
+    <a href="https://www.michigandaily.com/arts/digital-culture/the-spiral-and-dreams-of-wizard101/">
+        <Image src={spiral} alt="A pixel art rendition of the Wizard101 spiral of worlds. The illustration is colorful and emulates the style of Windows XP icons."/>
+        <p class="articletitle">The Spiral and Dreams of Wizard 101</p>
+        <p class="articleauth"><i>Nathaniel Ross</i></p>
+    </a>
+    <a href="https://www.michigandaily.com/arts/digital-culture/i-ranked-every-papa-louie-game-in-10-minutes/">
+        <Image src={papa} alt="An illustration of Papa Louie from the Papa’s cooking games. Next to him is the main character, Campbell."/>
+        <p class="articletitle">I ranked every Papa Louie game in ten minutes</p>
+        <p class="articleauth"><i>Campbell Johns</i></p>
+    </a>
+    <a href="https://www.michigandaily.com/arts/digital-culture/something-awful-this-way-comes/">
+        <Image src={cow} alt="An illustration depicting a Harvest Moon style cow and a hand grenade."/>
+        <p class="articletitle">Something Awful this way comes</p>
+        <p class="articleauth"><i>Rami Mahdi</i></p>
+    </a>
+    <a href="https://www.michigandaily.com/arts/digital-culture/an-elegy-to-webkinz-20-years-old-today/">
+        <Image src={gems} alt="An illustration of two Webkinz gems."/>
+        <p class="articletitle">An elegy to Webkinz, twenty years old today</p>
+        <p class="articleauth"><i>Camille Nagy</i></p>
+    </a>
+    <a href="https://www.michigandaily.com/arts/digital-culture/club-penguin-rewritten-revived-a-childhood-i-never-had/">
+        <Image src={penguin} alt="An illustration of a pixelated Club Penguin character."/>
+        <p class="articletitle">Club Penguin Rewritten revived a childhood I never had</p>
+        <p class="articleauth"><i>Ben Luu</i></p>
+    </a>
+</icons>
+
+<style>
+icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1ch;
+    margin: 2ch;
+    padding: 20px;
+    max-width: 120ch;
+}
+
+
+icons a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    background: navy;
+    border: 3px solid #ffffff;
+    border-right-color: #666666;
+    border-bottom-color: #666666;
+    padding: 15px;
+    margin: 5px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+icons a:hover {
+    transform: scale(1.05);
+    box-shadow: 8px 8px 15px rgba(0,0,0,0.7);
+}
+
+.articletitle {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px #000000;
+    margin: 10px 0;
+    animation: rainbow 6s infinite;
+}
+
+@keyframes rainbow {
+    0% { color: hsl(0, 100%, 50%); } 
+    16.67% { color: hsl(60, 100%, 50%); } 
+    33.33% { color: hsl(120, 100%, 50%); }
+    50% { color: hsl(180, 100%, 50%); }   
+    66.67% { color: hsl(240, 100%, 50%); } 
+    83.33% { color: hsl(300, 100%, 50%); }
+    100% { color: hsl(360, 100%, 50%); } 
+}
+
+.articleauth {
+    font-family: "Times New Roman", serif;
+    font-size: 0.9em;
+    color: #FFFF00;
+}
+
+img {
+    padding: 5px;
+    margin-bottom: 10px;
+    min-width: 10ch;
+    max-width: 20ch;
+    height: auto;
+}
+
+@media screen and (max-width: 1024px) {
+    icons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    icons {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

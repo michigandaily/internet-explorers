@@ -3,13 +3,10 @@ export interface Props {
   title: string;
   seotitle: string;
   description: string;
-  img: string;
-  date: string;
   author: string;
-  background_color: string;
 }
 
-const { title, seotitle, description, img, date, author, background_color } =
+const { title, seotitle, description, author, } =
   Astro.props;
 ---
 
@@ -61,13 +58,12 @@ const { title, seotitle, description, img, date, author, background_color } =
     <meta property="og:site_name" content="The Michigan Daily" />
     <meta property="og:title" content={seotitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={img} />
+    <meta property="og:image" content= />
 
     <meta
       property="article:publisher"
       content="https://www.facebook.com/michigandaily"
     />
-    <meta property="article:published_time" content={date} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@michigandaily" />
@@ -87,19 +83,8 @@ const { title, seotitle, description, img, date, author, background_color } =
       rel="stylesheet"
     />
     <title>{seotitle}</title>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L1LVKFD47K"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-L1LVKFD47K");
-    </script>
   </head>
-  <body style={`background-color: ${background_color}`}>
+  <body>
     <slot />
     <style is:global>
       html,
